@@ -36,4 +36,36 @@
 - VMware 화면에서 설정 버튼 누르고 Network Adapter(NAT방식)을 추가합니다.
 - 설정 완료 후 VMware 화면에서 Network Adapter 2가 추가된 것을 확인할 수 있습니다.
 
-![01]()
+![01](/KH_Security/Linux/Network%20Setting/img/01.png)
+
+- Rocky Linux 부팅 후 현재 활동 -> 프로그램 표시 -> 설정 -> 네트워크 메뉴로 이동합니다.
+
+![02](/KH_Security/Linux/Network%20Setting/img/02.png)
+
+---
+
+### NIC 확인
+
+- Ethernet 항목에서 다음 두 인터페이스를 확인합니다.
+  - 기존 인터페이스: `ens160`
+  - 새로 추가된 인터페이스: `ens224`
+
+---
+
+### NIC 신원 설정 및 IPv4 설정
+
+- NIC 신원 설정
+
+![03](/KH_Security/Linux/Network%20Setting/img/03.png)
+
+- NIC IPv4 설정
+
+![04](/KH_Security/Linux/Network%20Setting/img/04.png)
+
+- IP 수동 설정
+- IPv4 : 192.168.11.###
+- NetMask : 255.255.255.0
+
+---
+
+## NIC 추가 (nmtui 명령어를 통한 네트워크 설정)

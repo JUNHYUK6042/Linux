@@ -80,4 +80,20 @@
 - 4개의 스위치를 서로 연결하여 STP 환경을 구성합니다.
 - STP에 의해 차단된 포트는 Packet Tracer에서 주황색으로 표시됩니다.
 
-![18]
+![19](/KH_Security/Cisco%20Packet%20Tracer/img/19.png)
+
+---
+
+## STP 확인
+
+- `show spanning-tree` 명령어를 통해 STP 상태 확인합니다.
+
+### Switch0
+
+- Root ID의 Address와 Bridge ID의 Address가 같으면 Root Bridge이다
+
+![18](/KH_Security/Cisco%20Packet%20Tracer/img/18.png)
+
+- Switch0이 Root Bridge라는 것을 확인할 수 있다.
+
+---

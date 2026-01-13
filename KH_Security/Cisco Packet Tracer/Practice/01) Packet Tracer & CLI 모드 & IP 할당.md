@@ -207,14 +207,18 @@
 
 - `show ip interface brief`
 
-
+![15](/KH_Security/Cisco%20Packet%20Tracer/img/15.png)
 
 ### Switch 인터페이스 상태 확인
 
 - `show ip interface brief`
 
-
+![16](/KH_Security/Cisco%20Packet%20Tracer/img/16.png)
 
 ### PC & Router & Switch 통신 상인 확인
 
-- `ping 1.1.1.1 or 1.1.1.3
+- `ping 1.1.1.1 or 1.1.1.3`
+
+![17](/KH_Security/Cisco%20Packet%20Tracer/img/17.png)
+
+---

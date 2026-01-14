@@ -69,3 +69,41 @@
 ---
 
 ## NIC 추가 (nmtui 명령어를 통한 네트워크 설정)
+
+- nmtui 명령어 입력하면 다음과 같이 화면이 나옵니다.
+
+![05](/KH_Security/Linux/Network%20Setting/img/05.png)
+
+- 연결 편집으로 들어갑니다.
+
+![06](/KH_Security/Linux/Network%20Setting/img/06.png)
+
+- 추가 -> 이더넷 -> 생성을 순서대로 눌러주면 다음과 같이 화면이 나옵니다.
+
+![07](/KH_Security/Linux/Network%20Setting/img/07.png)
+
+- IPv4에서 자동 -> 수동
+- 숨기기 -> 보이기
+- IP : 192.168.11.136/24로 설정
+
+- 설정 완료 시 확인 버튼을 눌러줍니다.
+
+![08](/KH_Security/Linux/Network%20Setting/img/08.png)
+
+---
+
+## 설정 확인
+
+- `ip a` 명령어를 통해 잘 추가가 되었는지 확인해 줍니다.
+
+![09](/KH_Security/Linux/Network%20Setting/img/09.png)
+
+---
+
+## 인터페이스 활성화 및 비활성화
+
+- 명령어
+  - `ip link set [NIC] up / down`
+- 지정한 인터페이스를 활성화하거나 비활성화 한다.
+- 이를 통해서는 IP 등의 설정을 변경 할 수 없다.
+  - 항구적인 설정 변경은 불가하지만 임시 설정을 복원할 수 있다.

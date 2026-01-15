@@ -19,7 +19,7 @@
 ```text
 ip a show ens224 | grep ens224
 ```
-![10](/KH_Security/Linux/Network%20Setting/img/10.png)
+![10](/KH_Security/Linux/Network%20Setting%20-%201/img/10.png)
 
 - 현재 IP 주소는 `192.168.11.126/24` 입니다.
 
@@ -35,7 +35,7 @@ ip a change 192.168.11.136/24 dev ens224
 ```text
 ip a show ens224 | grep ens224
 ```
-![11](/KH_Security/Linux/Network%20Setting/img/11.png)
+![11](/KH_Security/Linux/Network%20Setting%20-%201/img/11.png)
 
 - 기존 IP `192.168.11.126/24` 와  
   새로 추가한 IP `192.168.11.136/24` 두 개가 동시에 존재하는 것을 확인할 수 있습니다.
@@ -52,7 +52,7 @@ ip a del 192.168.11.126/24 dev ens224
 ```text
 ip a show ens224 | grep ens224
 ```
-![12](/KH_Security/Linux/Network%20Setting/img/12.png)
+![12](/KH_Security/Linux/Network%20Setting%20-%201/img/12.png)
 
 - 기존 IP는 제거되고 새 IP만 남은 것을 확인할 수 있습니다.
 
@@ -71,7 +71,7 @@ ip a show ens224 | grep ens224
 ```text
 ip link set ens224 down & ip link set ens224 up
 ```
-![13](/KH_Security/Linux/Network%20Setting/img/13.png)
+![13](/KH_Security/Linux/Network%20Setting%20-%201/img/13.png)
 
 - 인터페이스를 다시 올리면  
   기존에 설정된 원래 IP로 되돌아간 것을 확인할 수 있습니다.
@@ -85,7 +85,7 @@ ip link set ens224 down & ip link set ens224 up
 ip r del default  
 ip r add default via 192.168.10.254
 ```
-![14](/KH_Security/Linux/Network%20Setting/img/14.png)
+![14](/KH_Security/Linux/Network%20Setting%20-%201/img/14.png)
 
 - `ip r show default`로 확인 시 변경된 것을 확인할 수 있습니다.
 - 하지만 이 역시 임시 설정입니다.
@@ -96,7 +96,7 @@ ip r add default via 192.168.10.254
 ```text
 ip link set ens down & ip link set enp0s1 up
 ```
-![15](/KH_Security/Linux/Network%20Setting/img/15.png)
+![15](/KH_Security/Linux/Network%20Setting%20-%201/img/15.png)
 
 - Default Gateway가 원래 값으로 복구된 것을 확인할 수 있습니다.
 
@@ -108,7 +108,7 @@ ip link set ens down & ip link set enp0s1 up
 ```text
 cat /etc/resolv.conf | grep nameserver
 ```
-![16](/KH_Security/Linux/Network%20Setting/img/16.png)
+![16](/KH_Security/Linux/Network%20Setting%20-%201/img/16.png)
 
 - 현재 nameserver는 `8.8.8.8` 입니다.
 
@@ -120,7 +120,7 @@ nslookup www.naver.com | grep Server
 ```
 - DNS 서버가 `8.8.8.8`로 사용되고 있음을 확인합니다.
 
-![17](/KH_Security/Linux/Network%20Setting/img/17.png)
+![17](/KH_Security/Linux/Network%20Setting%20-%201/img/17.png)
 
 ---
 
@@ -138,7 +138,7 @@ EOF
 ```text
 cat /etc/resolv.conf | grep nameserver
 ```
-![18](/KH_Security/Linux/Network%20Setting/img/18.png)
+![18](/KH_Security/Linux/Network%20Setting%20-%201/img/18.png)
 
 - nameserver가 `192.168.0.2`로 변경된 것을 확인합니다.
 

@@ -17,11 +17,11 @@
 
 - 다음 명령어로 인터페이스의 현재 IP 주소를 확인합니다.
 ```text
-ip a show enp224 | grep enp224
+ip a show ens224 | grep ens224
 ```
-![10]()
+![10](/KH_Security/Linux/Network%20Setting/img/10.png)
 
-- 현재 IP 주소는 `192.168.0.126/24` 입니다.
+- 현재 IP 주소는 `192.168.11.126/24` 입니다.
 
 ---
 
@@ -29,15 +29,15 @@ ip a show enp224 | grep enp224
 
 - 다음 명령어로 새로운 IP 주소를 추가합니다.
 ```text
-ip a change 192.168.11.137/24 dev enp0s1
+ip a change 192.168.11.136/24 dev ens224
 ```
 - 다시 IP 주소를 확인합니다.
 ```text
-ip a show enp0s1 | grep enp0s1
+ip a show ens224 | grep ens224
 ```
-![11]()
+![11](/KH_Security/Linux/Network%20Setting/img/11.png)
 
-- 기존 IP `192.168.0.126/24` 와  
+- 기존 IP `192.168.11.126/24` 와  
   새로 추가한 IP `192.168.11.136/24` 두 개가 동시에 존재하는 것을 확인할 수 있습니다.
 
 ---
@@ -46,13 +46,13 @@ ip a show enp0s1 | grep enp0s1
 
 - 기존 IP 주소를 삭제합니다.
 ```text
-ip a del 192.168.0.126/24 dev enp224
+ip a del 192.168.11.126/24 dev ens224
 ```
 - 다시 확인합니다.
 ```text
 ip a show ens224 | grep ens224
 ```
-![12]()
+![12](/KH_Security/Linux/Network%20Setting/img/12.png)
 
 - 기존 IP는 제거되고 새 IP만 남은 것을 확인할 수 있습니다.
 
@@ -71,7 +71,7 @@ ip a show ens224 | grep ens224
 ```text
 ip link set ens224 down & ip link set ens224 up
 ```
-![13]()
+![13](/KH_Security/Linux/Network%20Setting/img/13.png)
 
 - 인터페이스를 다시 올리면  
   기존에 설정된 원래 IP로 되돌아간 것을 확인할 수 있습니다.
@@ -85,7 +85,7 @@ ip link set ens224 down & ip link set ens224 up
 ip r del default  
 ip r add default via 192.168.10.254
 ```
-![14]()
+![14](/KH_Security/Linux/Network%20Setting/img/14.png)
 
 - `ip r show default`로 확인 시 변경된 것을 확인할 수 있습니다.
 - 하지만 이 역시 임시 설정입니다.
@@ -96,7 +96,7 @@ ip r add default via 192.168.10.254
 ```text
 ip link set ens down & ip link set enp0s1 up
 ```
-![15]()
+![15](/KH_Security/Linux/Network%20Setting/img/15.png)
 
 - Default Gateway가 원래 값으로 복구된 것을 확인할 수 있습니다.
 
@@ -108,7 +108,7 @@ ip link set ens down & ip link set enp0s1 up
 ```text
 cat /etc/resolv.conf | grep nameserver
 ```
-![16]()
+![16](/KH_Security/Linux/Network%20Setting/img/16.png)
 
 - 현재 nameserver는 `8.8.8.8` 입니다.
 
@@ -120,14 +120,14 @@ nslookup www.naver.com | grep Server
 ```
 - DNS 서버가 `8.8.8.8`로 사용되고 있음을 확인합니다.
 
-![17]()
+![17](/KH_Security/Linux/Network%20Setting/img/17.png)
 
 ---
 
 ### DNS 서버 변경
 ```text
 cat <<EOF > /etc/resolv.conf
-nameserver 192.168.0.1
+nameserver 192.168.0.2
 EOF
 ```
 - EOF가 나오기 전까지 입력된 내용을 파일에 기록합니다.
@@ -138,9 +138,9 @@ EOF
 ```text
 cat /etc/resolv.conf | grep nameserver
 ```
-![18]()
+![18](/KH_Security/Linux/Network%20Setting/img/18.png)
 
-- nameserver가 `192.168.0.1`로 변경된 것을 확인합니다.
+- nameserver가 `192.168.0.2`로 변경된 것을 확인합니다.
 
 ---
 
@@ -157,8 +157,7 @@ nslookup www.naver.com | grep Server
 - `ip addr`, `ip route`, `/etc/resolv.conf` 직접 수정은
   - 인터페이스 down / up
   - NetworkManager 재시작
-  - 시스템 재부팅
-  시 원래 상태로 복구됩니다.
+  - 시스템 재부팅 시 원래 상태로 복구됩니다.
 
 ---
 
@@ -166,12 +165,13 @@ nslookup www.naver.com | grep Server
 
 ### 설정 파일 경로
 
-- 다음 파일을 직접 수정하면 영구 설정이 됩니다.
+- 다음 파일을 직접 수정해야 합니다.
 
 - `/etc/sysconfig/network-scripts/ifcfg-NIC`
 - `/etc/NetworkManager/system-connections/NIC.nmconnection`
 
-- IP, Gateway, DNS 값을 파일에 직접 정의합니다.
+- IP, Gateway, DNS 값을 파일에 직접 정의해서 수정합니다.
+- 재부팅 시 적용됩니다.
 
 ---
 

@@ -1,4 +1,4 @@
-# Routing 정보 추가 & ARP
+<img width="596" height="290" alt="image" src="https://github.com/user-attachments/assets/0fc67d44-5318-462c-907e-2a556b4804dd" /># Routing 정보 추가 & ARP
 
 ---
 
@@ -10,7 +10,7 @@ ip neighbor show
 또는 축약형  
 ip n
 ```
-![19]( )
+![19](/KH_Security/Linux/Network%20Setting%20-%201/img/19.png)
 
 ---
 
@@ -45,7 +45,7 @@ ip n
 ```text
 ip n add 192.168.11.200 lladdr 00:1c:2d:3e:4f:05 dev ens224
 ```
-![20]()
+![20](/KH_Security/Linux/Network%20Setting%20-%201/img/20.png)
 
 - `ip n`으로 다시 확인 시  
   수동으로 추가한 ARP 정보가 등록된 것을 확인할 수 있습니다.
@@ -58,7 +58,7 @@ ip n add 192.168.11.200 lladdr 00:1c:2d:3e:4f:05 dev ens224
 ```text
 ip n del 192.168.11.200 dev ens224
 ```
-![21]()
+![21](/KH_Security/Linux/Network%20Setting%20-%201/img/21.png)
 
 - `ip n`으로 재확인 시  
   해당 ARP 엔트리가 정상적으로 삭제된 것을 확인할 수 있습니다.
@@ -73,7 +73,7 @@ ip route show
 또는 축약형  
 ip r
 ```
-![22](/)
+![22](/KH_Security/Linux/Network%20Setting%20-%201/img/22.png)
 
 - 라우팅 테이블을 확인합니다.
 - 첫 번째 줄에는 인터페이스에 해당하는 디폴트 게이트웨이 정보가 출력됩니다.
@@ -119,13 +119,13 @@ ip route add/del [target ip/mask] via [gateway ip] dev [NIC]
 ip route del default
 ip r
 ```
-![23]()
+![23](/KH_Security/Linux/Network%20Setting%20-%201/img/23.png)
 
 - 새로운 Default Gateway 추가
 ```text
 ip route add default via 192.168.10.1 dev ens160
 ```
-![24]()
+![24](/KH_Security/Linux/Network%20Setting%20-%201/img/24.png)
 
 - `ip r`로 확인 시 정상적으로 추가된 것을 확인할 수 있습니다.
 
@@ -133,9 +133,9 @@ ip route add default via 192.168.10.1 dev ens160
 
 ## 특정 경로(Route) 추가
 ```text
-ip route add 192.168.2.50 via 192.168.10.1 dev ens160
+ip route add 192.168.2.126 via 192.168.11.1 dev ens160
 ```
-![37]()
+![25](/KH_Security/Linux/Network%20Setting%20-%201/img/25.png)
 
 - 특정 목적지로 가는 경로가 정상적으로 추가된 것을 확인할 수 있습니다.
 
@@ -165,15 +165,13 @@ bind  : /etc/resolv.conf에 지정된 DNS 서버 질의
 ## /etc/hosts 실습 예시
 
 - `www.google.com`을 자주 사용하는 경우  
-  `/etc/hosts` 파일에 별명을 등록하여 간편하게 사용할 수 있습니다.
+  ` vi /etc/hosts` 명령어를 통해 파일에 별명을 등록하여 간편하게 사용할 수 있습니다.
 
-![]()
 
-- 이후 다음과 같이 테스트가 가능합니다.
+- 이후 다음과 같은 명령어를 입력하면 됩니다.
 ```text
 ping g
 ```
-![39]()
 
 ---
 
@@ -182,22 +180,22 @@ ping g
 - `/etc/sysconfig/network-scripts/ifcfg-ens224` 파일은  
   ens224 인터페이스의 IP, Gateway, 부팅 시 동작을 정의하는 **영구 설정 파일**입니다.
 
-![]()
+![26](/KH_Security/Linux/Network%20Setting%20-%201/img/26.png)
 
 ---
 
 ## IP 주소 영구 변경 실습
 
-- 기존 IPADDR 값은 `192.168.11.147` 입니다.
-- 이를 `192.168.11.123`으로 변경합니다.
+- 기존 IPADDR 값은 `192.168.11.136` 입니다.
+- 이를 `192.168.11.137`으로 변경합니다.
 
-![]()
+![27](/KH_Security/Linux/Network%20Setting%20-%201/img/27.png)
 
 - 시스템 재부팅 후 다음 명령어로 확인합니다.
 ```text
 ip a | grep ens224
 ```
-![]()
+![28](/KH_Security/Linux/Network%20Setting%20-%201/img/28.png)
 
 - 변경한 IP가 유지되는 것을 확인할 수 있습니다.
 - 이 방식은 **재부팅 후에도 유지되는 영구 설정**입니다.

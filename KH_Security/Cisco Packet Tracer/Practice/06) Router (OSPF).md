@@ -1,5 +1,7 @@
 # Router - OSPF 
 
+---
+
 ## 개요
 
 OSPF(Open Shortest Path First)는 링크 상태(Link-State) 기반의 IGP(Interior Gateway Protocol) 로,  

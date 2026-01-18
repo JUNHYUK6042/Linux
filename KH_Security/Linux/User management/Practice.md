@@ -28,4 +28,7 @@
 
 #### 그룹 생성 (group add)
 
-- groupadd -g 그룹번호 그룹명
+```text
+groupadd -g 그룹번호 그룹명
+```
+

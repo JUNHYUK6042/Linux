@@ -71,7 +71,7 @@ status, show, up, down, on, off, modify, add, delete
 
 `nmcli c show [NIC]`
 
-![01]()
+![01](/KH_Security/Linux/Network%20Setting%20-%202/img/01.png)
 
 ---
 
@@ -79,7 +79,7 @@ status, show, up, down, on, off, modify, add, delete
 
 `nmcli d show [NIC]
 
-![02]()
+![02](/KH_Security/Linux/Network%20Setting%20-%202/img/02.png)
 
 ---
 
@@ -99,19 +99,19 @@ status, show, up, down, on, off, modify, add, delete
 
 ## IP / Gateway / DNS 확인
 ```text
-nmcli d show ens224 | grep IP4.ADDRESS  
-nmcli d show ens224 | grep IP4.GATEWAY  
-nmcli d show ens224 | grep IP4.DNS  
+nmcli d show ens160 | grep IP4.ADDRESS  
+nmcli d show ens160 | grep IP4.GATEWAY  
+nmcli d show ens160 | grep IP4.DNS  
 ```
-![03]()
+![03](/KH_Security/Linux/Network%20Setting%20-%202/img/03.png)
 
 ---
 
 ## IP 주소 변경 (영구 설정)
 ```text
-nmcli c mod ens224 ipv4.addresses 192.168.11.66/24
+nmcli c mod ens224 ipv4.addresses 192.168.11.11/24
 ```
-- 이 동작은 **설정 파일을 수정하는 영구 변경**입니다.
+- 이 동작은 설정 파일을 수정하는 영구 변경하기 위한 명령어입니다.
 
 ---
 
@@ -119,7 +119,7 @@ nmcli c mod ens224 ipv4.addresses 192.168.11.66/24
 ```text
 nmcli d show ens224 | grep IP4.ADDRESS
 ```
-![]()
+![04](/KH_Security/Linux/Network%20Setting%20-%202/img/04.png)
 
 - nmcli d show는 **현재 세션에 적용된 상태**를 보여주기 때문에 이전 IP가 보입니다.
 
@@ -129,7 +129,7 @@ nmcli d show ens224 | grep IP4.ADDRESS
 cat /etc/sysconfig/network-scripts/ifcfg-ens224 | grep IPADDR
 ```
 
-![]()
+![05](/KH_Security/Linux/Network%20Setting%20-%202/img/05.png)
 
 ---
 
@@ -146,7 +146,7 @@ nmcli c up ens224
 ```text
 nmcli d show ens224 | grep IP4.ADDRESS
 ```
-![07](/Linux/Network%20Setting%20-%20Part%202/imgs/07.png)
+![06](/KH_Security/Linux/Network%20Setting%20-%202/img/06.png)
 
 - 변경된 IP로 적용된 것을 확인할 수 있습니다.
 
@@ -156,7 +156,7 @@ nmcli d show ens224 | grep IP4.ADDRESS
 ```text
 nmcli c show ens224 | grep -e IP4.ADDRESS -e ipv4.adress
 ```
-![]()
+![07](/KH_Security/Linux/Network%20Setting%20-%202/img/07.png)
 
 - connection에 저장된 **영구 설정값**을 확인합니다.
 
@@ -166,24 +166,25 @@ nmcli c show ens224 | grep -e IP4.ADDRESS -e ipv4.adress
 
 ### 변경 전 상태 확인
 ```text
-cat /etc/sysconfig/network-scripts/ifcfg-ens224 | grep -e GATEWAY -e DNS
+cat /etc/sysconfig/network-scripts/ifcfg-ens160 | grep -e GATEWAY -e DNS
 ```
-![]()
+![08](/KH_Security/Linux/Network%20Setting%20-%202/img/08.png)
 
-- Gateway : 
+- Gateway : 192.168.11.1
 - DNS : 8.8.8.8
 
 ---
 
 ### 설정 변경
 ```text
-nmcli c mod ens160 ipv4.gateway 192.168.10.254 ipv4.dns 1.1.1.1
+nmcli c mod ens160 ipv4.gateway 192.168.11.254 ipv4.dns 1.1.1.1
 ```
+
 ---
 
 ### 설정 파일 확인
 
-![10](/Linux/Network%20Setting%20-%20Part%202/imgs/10.png)
+![09](/KH_Security/Linux/Network%20Setting%20-%202/img/09.png)
 
 - 영구 설정 파일에는 정상 반영되어 있습니다.
 - 시스템에서도 반영이 되기 위해서는 재부팅을 해주면 됩니다.
@@ -194,7 +195,10 @@ nmcli c mod ens160 ipv4.gateway 192.168.10.254 ipv4.dns 1.1.1.1
 ```text
 nmcli d show ens160 | grep -e IP4.GATEWAY -e IP4.DNS
 ```
-![11](/Linux/Network%20Setting%20-%20Part%202/imgs/11.png)
+![10](/KH_Security/Linux/Network%20Setting%20-%202/img/10.png)
+
+- IP4.GATEWAY : 192.168.11.1
+- IP4.DNS : 8.8.8.8
 
 - 이유
   - nmcli d는 현재 동작 중인 상태만 출력합니다.
@@ -203,7 +207,9 @@ nmcli d show ens160 | grep -e IP4.GATEWAY -e IP4.DNS
 ```text
 nmcli c up ens160
 ```
-![12](/Linux/Network%20Setting%20-%20Part%202/imgs/12.png)
+`nmcli d show ens160 | grep -e IP4.GATEWAY -e IP4.DNS`
+
+![11](/KH_Security/Linux/Network%20Setting%20-%202/img/11.png)
 
 - Gateway 및 DNS가 정상적으로 적용된 것을 확인할 수 있습니다.
 
@@ -217,18 +223,19 @@ ls /etc/sysconfig/network-scripts/
 ```text
 nmcli con mod ens224 +ipv4.routes '10.0.0.0/24 192.168.11.254'
 ```
-![13](/Linux/Network%20Setting%20-%20Part%202/imgs/13.png)
+![12](/KH_Security/Linux/Network%20Setting%20-%202/img/12.png)
 
 - NIC가 2개가 있으므로 총 2개가 출력됩니다.
 - 하지만 추가한 라우팅 정보가 `/etc/sysconfig/network-scripts/`밑에 파일이 새로 생깁니다.
 
 ### 추가된 파일 확인
 - 확인해보면 필자가 추가한 정보가 다음과 같이 파일에 기입된 것을 확인할 수 있습니다.
+`cat /etc/sysconfig/network-scripts/route-ens224`
 
-![14](/Linux/Network%20Setting%20-%20Part%202/imgs/14.png)
+![13](/KH_Security/Linux/Network%20Setting%20-%202/img/13.png)
 
-- 현재 세션에 적용시키기 위해서 `nmcli connection up ens24`로 설정을 현재 세션에 적용시켜줍니다.
+- 현재 세션에 적용된걸 확인하기 위해서 `ip route | grep ens224` 명령어를 입력합니다.
 
-![15](/Linux/Network%20Setting%20-%20Part%202/imgs/15.png)
+![14](/KH_Security/Linux/Network%20Setting%20-%202/img/14.png)
 
-- `ip route | grep 10.0.0.0`으로 라우팅 정보를 찾아보면 다음과 같이 잘 적용된 것을 확인할 수 있습니다.
+---

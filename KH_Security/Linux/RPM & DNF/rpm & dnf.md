@@ -25,20 +25,20 @@ rpm  -qf 파일명 : 지정한 파일이 포함된 패키지
 
 - `rpm -qa`
 
-![01]()
+![01](/KH_Security/Linux/RPM%20%26%20DNF/img/01.png)
 
 - `rpm -qi`
 
-![02]()
+![02](/KH_Security/Linux/RPM%20%26%20DNF/img/02.png)
 
 - `rpm -ql`
 
-![03]()  
-![04]()
+![03](/KH_Security/Linux/RPM%20%26%20DNF/img/03.png)  
+![04](/KH_Security/Linux/RPM%20%26%20DNF/img/04.png)
 
 - `rpm -qf`
 
-![05]()
+![05](/KH_Security/Linux/RPM%20%26%20DNF/img/05.png)
 
 ---
 
@@ -57,13 +57,13 @@ rpm -ivh [패키지명] : 업데이트만 실시
 `rpm -UVh` 명령어를 이용하여 패키지를 설치 할 것입니다.  
 그 전에 `mount`작업을 해줍니다.
 ```
-![06]()
+![06](/KH_Security/Linux/RPM%20%26%20DNF/img/06.png)
 
 - `ls | grep vsftpd` 명령어를 통해 vsftpd 패키지가 있는 지 확인해줍니다.  
 그리고 나서 `rpm -qa | grep` 명령어를 통해 패키지가 설치 되었는지 확인하고  
 없으면 `rpm -Uvh` 명령어를 통해 설치 해줍니다.
 
-![07]()
+![07](/KH_Security/Linux/RPM%20%26%20DNF/img/01.png)
 
 - 설치되는 모습을 볼 수 있습니다.
 
@@ -73,7 +73,7 @@ rpm -ivh [패키지명] : 업데이트만 실시
 
 `rpm e [패키지명] 명령어를 통해 지정된 패키지를 삭제합니다.` 
 
-![08]()
+![08](/KH_Security/Linux/RPM%20%26%20DNF/img/08.png)
 
 ---
 
@@ -119,7 +119,7 @@ dnf repolist
 ```
 - 시스템에 등록된 repository list를 출력합니다.
 
-![09]()
+![09](/KH_Security/Linux/RPM%20%26%20DNF/img/09.png)
 
 #### dnf search 문자열
 
@@ -129,7 +129,7 @@ dnf search sql
 ```
 - `sql`이라는 키워드를 포함한 패키지를 검색할 때 사용하는 명령어입니다.
 
-![10]()
+![10](/KH_Security/Linux/RPM%20%26%20DNF/img/10.png)
 
 #### dnf repoquery -l 패키지
 
@@ -139,7 +139,7 @@ dnf repoquery -l iproute
 - iproute 패키지에 포함된 파일 목록을 확인할 때 사용합니다.  
 아직 설치하지 않은 패키지라도 저장소(repo)에 있는 파일 구성까지 조회할 수 있다는 점이 핵심입니다.
 
-![11]()
+![11](/KH_Security/Linux/RPM%20%26%20DNF/img/11.png)
 
 #### dnf provides 파일
 
@@ -148,7 +148,7 @@ dnf provides /usr/sbin/ip
 ```
 - /usr/sbin/ip 파일(명령어)을 제공하는 패키지가 무엇인지를 확인할 때 사용합니다.
 
-![12]()
+![12](/KH_Security/Linux/RPM%20%26%20DNF/img/12.png)
 
 ---
 
@@ -159,7 +159,7 @@ dnf provides /usr/sbin/ip
 - `# dnf install [-y] 패키지명`
 - 패키지를 repository로 부터 설치합니다.
 
-![13]()
+![13](/KH_Security/Linux/RPM%20%26%20DNF/img/13.png)
 
 ---
 
@@ -210,7 +210,7 @@ info "그룹" : 그룹의 정보를 검색합니다.
 
 `dnf group list`
 
-![14]()
+![14](/KH_Security/Linux/RPM%20%26%20DNF/img/14.png)
 
 ---
 
@@ -234,7 +234,7 @@ dnf repolist [all]
 -  저장소 목록을 검색합니다.  
 all : 모든 저장소 목록을 검색합니다.
 
-![15]()
+![15](/KH_Security/Linux/RPM%20%26%20DNF/img/15.png)
 
 ### 저장소 활성화
 
@@ -246,7 +246,7 @@ dnf config-manager --set-disabled [repo] || \*
 - `--set-disable [repo]` : 저장소 비활성화
 - \*는 모든 repository를 의미 (추천하지 않습니다.)
 
-![16]()
+![16](/KH_Security/Linux/RPM%20%26%20DNF/img/16.png)
 
 - 저장소 목록에 있는 rt 파일을 활성화 했다가 비활성화 해보았습니다.
 

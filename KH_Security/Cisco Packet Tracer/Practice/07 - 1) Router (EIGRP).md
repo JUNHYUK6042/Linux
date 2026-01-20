@@ -202,7 +202,7 @@ copy run start
 
 ---
 
-## R2 Setting
+## R3 Setting
 
 ```
 enable

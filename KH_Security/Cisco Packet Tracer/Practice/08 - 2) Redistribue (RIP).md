@@ -37,7 +37,7 @@ redistribute eigrp 100 metric 5
 
 ### RIP + OSPF 구성도
 
-![16]()
+![16](/KH_Security/Cisco%20Packet%20Tracer/img/Router%20Redistribute/16.png)
 
 ---
 
@@ -155,7 +155,7 @@ redistribute ospf 1 metric 10000 1000 255 1 1500
 
 ### RIP + EIGRP 구성도
 
-![21]()
+![21](/KH_Security/Cisco%20Packet%20Tracer/img/Router%20Redistribute/21.png)
 
 ---
 

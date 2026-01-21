@@ -1,4 +1,4 @@
-# Cisco Router Redistribution 정리
+# Cisco Router Redistribution
 
 ## 1. Redistribution - RIP
 
@@ -20,20 +20,20 @@
   - 전달된 경로의 metric 값이 16보다 크면 RIP는 이를 무시한다.
   - Default-metric을 지정하면 metric 입력을 생략할 수 있다.
 
-### Ex
-
-```bash
-redistribute static
-redistribute ospf 1 metric 5
-redistribute eigrp 100 metric 5
-```
-
 ### Command Format
 
 ```bash
 redistribute static
 redistribute ospf <PID> metric <값>
 redistribute eigrp <AS> metric <값>
+```
+
+### Ex
+
+```bash
+redistribute static
+redistribute ospf 1 metric 5
+redistribute eigrp 100 metric 5
 ```
 
 ---
@@ -51,20 +51,20 @@ redistribute eigrp <AS> metric <값>
 - Subnets
   - classless 정보를 전송하기 위해 사용된다.
 
-### Ex
-
-```bash
-redistribute static subnets
-redistribute rip subnets
-redistribute eigrp 100 metric 10 subnets
-```
-
 ### Command Format
 
 ```bash
 redistribute static subnets
 redistribute rip subnets
 redistribute eigrp <AS> metric <값> subnets
+```
+
+### Ex
+
+```bash
+redistribute static subnets
+redistribute rip subnets
+redistribute eigrp 100 metric 10 subnets
 ```
 
 ### Default Route
@@ -95,14 +95,6 @@ default-information originate
 
 Metric 입력 순서 : K1 K3 K4 K2 K5
 
-### Ex
-
-```bash
-redistribute static
-redistribute rip metric 10000 10 255 1 1500
-redistribute ospf 1 metric 10000 1000 255 1 1500
-```
-
 ### Command Format
 
 ```bash
@@ -111,13 +103,21 @@ redistribute rip subnets
 redistribute eigrp <AS> metric <값> subnets
 ```
 
+### Ex
+
+```bash
+redistribute static
+redistribute rip metric 10000 10 255 1 1500
+redistribute ospf 1 metric 10000 1000 255 1 1500
+```
+
 ---
 
 ## Static-RIP
 
 ### Static-RIP 구성도
 
-![01]()
+![01](/KH_Security/Cisco%20Packet%20Tracer/img/Router%20Redistribute/01.png)
 
 ---
 
@@ -190,16 +190,16 @@ network 45.1.1.0
 ### PC에서의 통신 테스트
 
 - PC1(1.1.1.11)  
-![02]()
+![02](/KH_Security/Cisco%20Packet%20Tracer/img/Router%20Redistribute/02.png)
 
 - PC2(2.2.2.11)  
-![03]()
+![03](/KH_Security/Cisco%20Packet%20Tracer/img/Router%20Redistribute/03.png)
 
 - PC3(4.4.4.11)  
-![04]()
+![04](/KH_Security/Cisco%20Packet%20Tracer/img/Router%20Redistribute/04.png)
 
 - PC4(5.5.5.11)  
-![05]()
+![05](/KH_Security/Cisco%20Packet%20Tracer/img/Router%20Redistribute/05.png)
 
 ---
 
@@ -207,7 +207,7 @@ network 45.1.1.0
 
 ### Static-OSPF 구성도
   
-![06]()
+![06](/KH_Security/Cisco%20Packet%20Tracer/img/Router%20Redistribute/06.png)
 
 ---
 
@@ -274,16 +274,16 @@ network 45.1.1.5 0.0.0.0 area 0
 ### PC에서의 통신 테스트
 
 - PC1(1.1.1.11)  
-![07]()
+![07](/KH_Security/Cisco%20Packet%20Tracer/img/Router%20Redistribute/07.png)
 
 - PC2(2.2.2.11)  
-![08]()
+![08](/KH_Security/Cisco%20Packet%20Tracer/img/Router%20Redistribute/08.png)
 
 - PC3(4.4.4.11)  
-![09]()
+![09](/KH_Security/Cisco%20Packet%20Tracer/img/Router%20Redistribute/09.png)
 
 - PC4(5.5.5.11)  
-![10]()
+![10](/KH_Security/Cisco%20Packet%20Tracer/img/Router%20Redistribute/10.png)
 
 ---
 
@@ -291,7 +291,7 @@ network 45.1.1.5 0.0.0.0 area 0
 
 ### Static-EIGRP 구성도
   
-![11]()
+![11](/KH_Security/Cisco%20Packet%20Tracer/img/Router%20Redistribute/11.png)
 
 ---
 
@@ -360,15 +360,15 @@ network 45.1.1.5 0.0.0.0
 ### PC에서의 통신 테스트
 
 - PC1(1.1.1.11)  
-![12]()
+![12](/KH_Security/Cisco%20Packet%20Tracer/img/Router%20Redistribute/12.png)
 
 - PC2(2.2.2.11)  
-![13]()
+![13](/KH_Security/Cisco%20Packet%20Tracer/img/Router%20Redistribute/13.png)
 
 - PC3(4.4.4.11)  
-![14]()
+![14](/KH_Security/Cisco%20Packet%20Tracer/img/Router%20Redistribute/14.png)
 
 - PC4(5.5.5.11)  
-![15]()
+![15](/KH_Security/Cisco%20Packet%20Tracer/img/Router%20Redistribute/15.png)
 
 ---

@@ -101,7 +101,7 @@
 systemctl list-unit-files
 ```
 
-![01]()
+![01](/KH_Security/Linux/Service%20Management/img/01.png)
 
 - STATE 항목을 통해 각 서비스가 `static`, `generated`, `enabled`, `disabled` 중 어떤 상태로 설정되어 있는지 확인할 수 있습니다.
 
@@ -110,7 +110,7 @@ systemctl list-unit-files
  systemctl[is-enabled | is-active] [서비스]
 ```
 
-![02]()
+![02](/KH_Security/Linux/Service%20Management/img/02.png)
 
 - `is-enabled`는 서비스의 자동 실행 등록 여부를 확인하고,  
   `is-active`는 현재 실행 중인지 여부를 확인합니다.
@@ -123,7 +123,7 @@ systemctl list-unit-files
 systemctl [enable | disable] [Service]
 ```
 
-![03]()
+![03](/KH_Security/Linux/Service%20Management/img/03.png)
 
 - `enable` / `disable` : 서비스 자동 실행 등록 및 해제  
 - `--now` 옵션 : 자동 실행 설정과 동시에 start 또는 stop 수행
@@ -136,7 +136,7 @@ systemctl [enable | disable] [Service]
 systemctl [start | restart | stop ] [Service]
 ```
 
-![04]()
+![04](/KH_Security/Linux/Service%20Management/img/04.png)
 
 - `start`, `restart`, `stop` 명령어를 사용해 서비스를 실행, 재시작, 종료할 수 있습니다.
 
@@ -144,7 +144,7 @@ systemctl [start | restart | stop ] [Service]
 
 ## ntsysv
 
-![05]()
+![05](/KH_Security/Linux/Service%20Management/img/05.png)
 
 - `ntsysv`는 텍스트 기반 메뉴를 통해 부팅 시 실행되는 서비스를 설정하는 도구로,  
 현재는 systemctl 사용이 권장된다.
@@ -177,8 +177,8 @@ Runlevel보다 더 다양한 부팅 모드를 제공한다.
 systemctl list-units --type target --all
 ```
 
-![06]()  
-![07]()
+![06](/KH_Security/Linux/Service%20Management/img/06.png)  
+![07](/KH_Security/Linux/Service%20Management/img/07.png)
 
 ---
 
@@ -192,7 +192,7 @@ systemctl list-units --type target --all
 systemctl get-default
 ```
 
-![08]()
+![08](/KH_Security/Linux/Service%20Management/img/08.png)
 
 - Default Target 설정 후 확인
 
@@ -200,7 +200,7 @@ systemctl get-default
 systemctl set-default
 ```
 
-![09]()
+![09](/KH_Security/Linux/Service%20Management/img/09.png)
 
 - 변경 후에는 시스템을 리부팅합니다.
 
